@@ -10,11 +10,9 @@
 
 ## 重要组成
 
-| 组成 | 职责 |
-| --- | --- |
-| `TextHitLabel` | 显示文本、同步排版属性、处理点击回调。 |
-| `TextHitResolver` | 管理 TextKit 排版、匹配范围及坐标查询。 |
-| `TextMatchRule` | 定义正则规则，支持外部遵循协议。 |
+- **`TextHitLabel`**：文本显示与交互入口，同步字体、对齐、换行及行数等排版属性，处理点击并回调匹配内容；Debug 下通过红色 TextView 对照文字位置。
+- **`TextHitResolver`**：文本解析与命中计算，管理 TextKit 排版对象，根据规则生成匹配范围，将点击坐标转换为字符位置，并排除被截断的内容；规则变化时自动重新匹配。
+- **`TextMatchRule`**：匹配规则协议，通过正则表达式描述匹配内容，允许模块外自定义规则；内置 `WordMatchRule`、`AlphanumericWordMatchRule` 和 `EmailMatchRule`。
 
 ## 测试入口
 
